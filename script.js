@@ -1,5 +1,5 @@
 var choices = document.getElementsByClassName("choices");
-var compChoices = ["rock", "paper", "scissor"];
+var compChoices = ["rock", "paper", "scissors"];
 var userChoice = "";
 var compChoice = "";
 var userWins = 0;
@@ -11,9 +11,11 @@ var isTie = null;
 var rock = document.getElementById("rock");
 var paper = document.getElementById("paper");
 var scissors = document.getElementById("scissors");
+var message = document.getElementById("message");
 
 document.getElementById("ui").addEventListener('mouseover', function(e){
-    document.getElementById("message").innerHTML = "Select A Choice to Play!";
+    message.className = "center";
+    message.innerHTML = "Select A Choice to Play!";
 });
 
 rock.addEventListener('click', () => {
@@ -67,22 +69,29 @@ function gameStart() {
             isWin = false;
         }
     }
-    outcome = "It's a tie!";
+    var color = "gray";
+    var outcome = "It's a tie!";
     if(isWin) {
         userWins++;
-        outcome = "You win!";
+        outcome = "You Win!";
+        color = "green"
     }else if(!isWin && !isTie) {
         compWins++;
-        outcome = "You Lose, Bitch ass Nigger!";
+        outcome = "You Lose!";
+        color = "red"
     }
-    function wait(ms) {setTimeout(()=>{},ms)};
-    wait(1500).then(() => {
-        document.getElementById("message").innerHTML = outcome;
-    });
-    wait(1500).then(() => {
+    message.innerHTML = userChoice + " VS. " + compChoice;
+    setTimeout(() => {
+        message.innerHTML = outcome;
+        message.className = color + " center";
+    },1000);
+    setTimeout(() => {
         document.getElementById("user_score").innerHTML = "Your Score = " + userWins;
         document.getElementById("comp_score").innerHTML = "Computer Score = " + compWins;
-    });
+    },1000);
+    setTimeout(() => {
+        document.getElementById("ui").className = "container";
+    },2500);
 
 }
 
