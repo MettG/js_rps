@@ -1,0 +1,32 @@
+.hide {
+	display: none;
+}
+.show {
+	display: flex;
+}
+.left {
+	float: left;
+}
+.right {
+	float: right;
+}
+.score {
+	display: inline;
+}
+.container {
+	display: flex;
+	justify-content: space-between;
+}
+.choice_cont {
+	white-space: nowrap;
+  overflow-x: auto;
+}
+.center {
+	margin-left: 40%;
+	margin-right: 40%;
+}
+img {
+	width: 300px;
+	height: 300px;
+	display: inline-block;
+}
